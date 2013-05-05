@@ -31,12 +31,12 @@ When /^I click the "([^"]*)" button$/ do |button_text|
   click_button button_text
 end
 
-Then /^(?:|I )should (not )?see "([^"]*)"$/ do |should_not, text|
-  if should_not.present?
-    page.should have_no_content(text)
-  else
-    page.should have_content(text)
-  end
+When /^(?:|I )click the "([^"]*)" link$/ do |link|
+  click_link(link)
+end
+
+When /^(?:|I )click the first "([^"]*)" link$/ do |link|
+  first(:link, link).click
 end
 
 When /^(?:|I )choose "([^"]*)"$/ do |radio_button|
@@ -50,6 +50,15 @@ end
 Then /^(?:|I )should see "([^"]*)" is selected with "([^"]*)"$/ do |field, value|
   status = page.has_select?(field, :selected => value).should be_true
 end
+
+Then /^(?:|I )should (not )?see "([^"]*)"$/ do |should_not, text|
+  if should_not.present?
+    page.should have_no_content(text)
+  else
+    page.should have_content(text)
+  end
+end
+
 
 # image check
 Then /^(?:|I )should see "([^"]*)" image$/ do |image|

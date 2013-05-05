@@ -2,6 +2,7 @@ Then(/^I clear the dowloaded files$/) do
   clear_downloads
 end
 
-Given /^I should see the "([^"]*)" file in downloads folder$/ do |filename|
-  File.exists?(ENV['DOWNLOAD_DIR']+'/'+file_name).should be_true
+Then /^I should see the "([^"]*)" file in downloads folder$/ do |filename|
+  wait_for_download
+  File.exists?(ENV['DOWNLOAD_DIR']+'/'+filename).should be_true
 end

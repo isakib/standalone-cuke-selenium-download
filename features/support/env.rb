@@ -21,7 +21,7 @@ Capybara.register_driver :selenium do |app|
   profile['browser.download.manager.useWindow'] = false
   profile['browser.download.useDownloadDir'] = true
   profile['browser.download.dir'] = ENV['DOWNLOAD_DIR']
-  profile['browser.helperApps.neverAsk.saveToDisk'] = "application/csv,application/excel,text/csv,application/x-tar,application/g-zip"
+  profile['browser.helperApps.neverAsk.saveToDisk'] = "application/x-tar,application/g-zip,application/zip,application/csv,application/excel,text/csv"
   Capybara::Selenium::Driver.new(app, :profile => profile)
 end
 

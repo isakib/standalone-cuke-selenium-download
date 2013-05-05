@@ -2,9 +2,11 @@
 
 == Introduction
 
- As growing interest in BDD and continous integration, standalone cucumbers became good start for making test suite for non rails projects too. 
+ As growing interest in BDD and continous integration, standalone cucumbers became good start for 
+ making test suite for non rails projects too. 
  
- This repo contains additional setups for selenium (click and) download and more step_definitions to accomdate
+ This repo contains additional setups for selenium (click and) download and more 
+ step_definitions to accomdate
   - to check there is no traditional javascript popups opened
   - debugging : debugging was very useful to find xpath to locate the interested elements
   - javascript ajax requests check
@@ -16,7 +18,8 @@
 
  This is extension of standalone-cucumber; https://github.com/thuss/standalone-cucumber
 
- Download module is modified from the original version available in https://github.com/ninjapanzer/cuke-capy-chrome
+ Download module is modified from the original version available 
+ in https://github.com/ninjapanzer/cuke-capy-chrome
 
 == Project Layout
 
@@ -40,7 +43,7 @@
 
 == Configuration
 
-* bundle install
+* bundle update
 
 == Running Features
 
@@ -55,7 +58,8 @@
 
 == Selenium profile configuration
 
-* Use Firefox -> Preferences/Options -> Application tab for finding suitable file type to be added in 'browser.helperApps.neverAsk.saveToDisk' list
+* Use Firefox -> Preferences/Options -> Application tab for finding suitable file 
+  type to be added in 'browser.helperApps.neverAsk.saveToDisk' list
 * More info mozilla {about:config}[http://kb.mozillazine.org/Firefox_:_FAQs_:_About:config_Entries]
   
 
