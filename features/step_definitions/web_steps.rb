@@ -27,8 +27,24 @@ Given /^I have entered "([^"]*)" into the "([^"]*)" field$/ do |text, field|
   fill_in field, :with => text
 end
 
+Given /^(?:|I )have entered "([^"]*)" into the "([^"]*)" field and trigger change event$/ do |text, field|
+  begin
+    fill_in field, :with => text
+    trigger_change_event_for_field_id(find(:field, field)['id'])
+  rescue Capybara::ElementNotFound
+    # try a CSS selector
+    f = find(field)
+    f.set(text)
+    trigger_change_event_for_field_id(f['id'])
+  end
+end
+
 When /^I click the "([^"]*)" button$/ do |button_text|
   click_button button_text
+end
+
+When(/^I click the first button$/) do
+ page.first(:xpath, "//button").click
 end
 
 When /^(?:|I )click the "([^"]*)" link$/ do |link|
@@ -52,7 +68,7 @@ Then /^(?:|I )should see "([^"]*)" is selected with "([^"]*)"$/ do |field, value
 end
 
 Then /^(?:|I )should (not )?see "([^"]*)"$/ do |should_not, text|
-  if should_not.present?
+  if should_not && should_not.present?
     page.should have_no_content(text)
   else
     page.should have_content(text)

@@ -30,7 +30,7 @@
 * support/env.rb : configures the driver (download settings) and the hostname to use
 * support/hooks.rb : pause step
 * support/download.rb : download file checkings and cleanups
-* support/javascript.rb : javascript triggers and ajax request completion check
+* support/javascript.rb : javascript triggers and ajax request completion check (requires jQuery)
 * tmp/downloads : download directory
 * config/cucumber.yml : default cuke running setups
 * .rdebugrc : debugger setups

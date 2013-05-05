@@ -3,8 +3,10 @@ Feature: Search
   As an information seeker
   I want to be able to search using keywords
 
-  Scenario: Search for cucumber
-    Given I am on the home page
-    And I have entered "cucumber bdd" into the "q" field
-    When I click the "Search" button
-    Then I should see "Cucumber - Making BDD fun"
+#@pause
+Scenario: Search for cucumber
+  Given I am on the home page
+  When I have entered "cucumber bdd" into the "q" field
+  And I click the first button
+  And I wait 2 seconds
+  Then I should see "Cucumber - Making BDD fun"
