@@ -7,6 +7,7 @@ Feature: Search
 Scenario: Search for cucumber
   Given I am on the home page
   When I have entered "cucumber bdd" into the "q" field
-  And I click the first button
+  And I wait 2 seconds
+  And I press "Return" key
   And I wait 2 seconds
   Then I should see "Cucumber - Making BDD fun"

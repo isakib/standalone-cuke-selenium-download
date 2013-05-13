@@ -121,5 +121,8 @@ Then /^(?:|I )close the focused page$/ do
   page.driver.browser.close
 end
 
-
+When /^I press "([^"]*)" key$/ do |key|
+  #debugger
+  find_field('q').native.send_key(key.downcase.to_sym)
+end
 
