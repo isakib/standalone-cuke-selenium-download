@@ -27,6 +27,11 @@ Given /^I have entered "([^"]*)" into the "([^"]*)" field$/ do |text, field|
   fill_in field, :with => text
 end
 
+When /^I have entered "([^"]*)" into the "([^"]*)" field and press "([^"]*)" key$/ do |text, field, key|
+  fill_in field, :with => text
+  find_field(field).native.send_key(key.downcase.to_sym)
+end
+
 Given /^(?:|I )have entered "([^"]*)" into the "([^"]*)" field and trigger change event$/ do |text, field|
   begin
     fill_in field, :with => text
@@ -121,8 +126,8 @@ Then /^(?:|I )close the focused page$/ do
   page.driver.browser.close
 end
 
-When /^I press the "([^"]*)" key$/ do |key|
+When /^I press the "([^"]*)" key associated with "([^"]*)"$/ do |key, field|
   #debugger
-  find_field('q').native.send_key(key.downcase.to_sym)
+  find_field(field).native.send_key(key.downcase.to_sym)
 end
 
