@@ -6,7 +6,7 @@
  making test suite for non rails projects too. 
  
  This repo contains additional setups for selenium (click and) download and more 
- step_definitions to accomdate
+ step_definitions to accommodate
   - to check there is no traditional javascript popups opened
   - debugging : debugging was very useful to find xpath to locate the interested elements
   - javascript ajax requests check
