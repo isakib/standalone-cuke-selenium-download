@@ -22,6 +22,8 @@ Capybara.register_driver :selenium do |app|
   profile['browser.download.useDownloadDir'] = true
   profile['browser.download.dir'] = ENV['DOWNLOAD_DIR']
   profile['browser.helperApps.neverAsk.saveToDisk'] = "application/x-tar,application/g-zip,application/zip,application/csv,application/excel,text/csv"
+  #avoid print dialogs
+  profile['capability.policy.default.Window.print'] = "noAccess"
   Capybara::Selenium::Driver.new(app, :profile => profile)
 end
 
