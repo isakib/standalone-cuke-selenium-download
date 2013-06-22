@@ -1,0 +1,11 @@
+language: ruby
+env:
+  - "RAILS_VERSION=3.2.13"
+rvm:
+  - "1.9.3"
+  - "2.0.0"
+matrix:
+  allow_failures:
+    - rvm: 2.0.0
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec
