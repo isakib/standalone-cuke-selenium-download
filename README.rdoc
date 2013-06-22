@@ -1,8 +1,6 @@
 = Standalone Cucumber Test Suite with Selenium Download
 
-Travis build status
-[![Build Status](https://travis-ci.org/sivajankan/standalone-cuke-selenium-download.png?branch=master)](https://travis-ci.org/sivajankan/standalone-cuke-selenium-download)
-== Introduction
+Travis build can not be made, as this package doesn't include rake! 
 
  As growing interest in BDD and continous integration, standalone cucumbers became good start for 
  making test suite for non rails projects too. 
