@@ -9,3 +9,8 @@ Scenario: Search for cucumber
   When I have entered "cucumber bdd" into the "q" field and press "Return" key
   And I wait 2 seconds
   Then I should see "Cucumber - Making BDD fun"
+
+Scenario: Slider move
+  Given I am on the "http://jqueryfordesigners.com/demo/slider-gallery.html" page
+  Then I could move the slider to see all options
+

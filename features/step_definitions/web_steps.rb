@@ -131,3 +131,41 @@ When /^I press the "([^"]*)" key associated with "([^"]*)"$/ do |key, field|
   find_field(field).native.send_key(key.downcase.to_sym)
 end
 
+When /^(?:|I )could move the slider to see all options$/ do 
+  #debugger
+  sleep_time = 2 # time to see visual effects manually
+
+  # normal slider click step; but it makes approximate move
+  page.find(:xpath, "//div[@class='slider ui-slider']").click
+  sleep(sleep_time)  
+  
+  ##
+  # These are the steps helpful to control the slider more elegently
+  # if you monitor the page closely, the slider click sets the ul's style value (1st line)
+  # and curser div.handle style too (2nd line)
+  # so, using page.execute_script to set the ul style
+  ##
+
+  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: 0px')")
+  page.execute_script("$('div.handle').attr('style', 'left: 0px')")
+  sleep(sleep_time) 
+  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -468px')")
+  page.execute_script("$('div.handle').attr('style', 'left: 83.5px')")
+  sleep(sleep_time) 
+  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -1207px')")
+  page.execute_script("$('div.handle').attr('style', 'left: 216.5px')")
+  sleep(sleep_time) 
+  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -2028px')")
+  page.execute_script("$('div.handle').attr('style', 'left: 363px')")
+  sleep(sleep_time) 
+  # using this slider position can be moved to any point like using mouse move
+  # this step can be extentable to the level of mouse scrolling
+  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -1500px')")
+  page.execute_script("$('div.handle').attr('style', 'left: 268px')")
+  sleep(sleep_time) 
+  #resetting back
+  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: 0px')")
+  page.execute_script("$('div.handle').attr('style', 'left: 0px')")
+  sleep(sleep_time) 
+
+end
