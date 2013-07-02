@@ -7,4 +7,5 @@ group(:test) do
   gem "rspec"
   gem "debugger"
   gem "launchy"
+  gem "rake"
 end
