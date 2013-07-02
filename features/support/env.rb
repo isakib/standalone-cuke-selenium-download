@@ -27,4 +27,11 @@ Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :profile => profile)
 end
 
+Capybara.configure do |config|
+  config.match = :one
+  config.exact_options = true
+  config.ignore_hidden_elements = true
+  config.visible_text_only = true
+end
+
 World(Capybara) 

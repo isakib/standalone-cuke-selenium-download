@@ -1,3 +1,20 @@
+module WebStepsHelpers
+  def move_jqueryui_slider(window_pos, scroll_pos, sleep_time)
+    ##
+    # These are the steps helpful to control the slider more elegently
+    # if you monitor the page closely, the slider click sets the ul's style value (1st line)
+    # and curser div.handle style too (2nd line)
+    # so, using page.execute_script to set the ul style
+    ##
+    # using this slider position can be moved to any point like using mouse move
+    # this step can be extentable to the level of mouse scrolling
+    page.execute_script("$('div.sliderGallery ul').attr('style', 'left: #{window_pos}')")
+    page.execute_script("$('div.handle').attr('style', 'left: #{scroll_pos}')")
+    sleep(sleep_time) 
+  end
+end
+World(WebStepsHelpers)
+
 When /^(?:|I )reload the page$/ do
   case Capybara::current_driver
   when :selenium
@@ -139,33 +156,12 @@ When /^(?:|I )could move the slider to see all options$/ do
   page.find(:xpath, "//div[@class='slider ui-slider']").click
   sleep(sleep_time)  
   
-  ##
-  # These are the steps helpful to control the slider more elegently
-  # if you monitor the page closely, the slider click sets the ul's style value (1st line)
-  # and curser div.handle style too (2nd line)
-  # so, using page.execute_script to set the ul style
-  ##
-
-  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: 0px')")
-  page.execute_script("$('div.handle').attr('style', 'left: 0px')")
-  sleep(sleep_time) 
-  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -468px')")
-  page.execute_script("$('div.handle').attr('style', 'left: 83.5px')")
-  sleep(sleep_time) 
-  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -1207px')")
-  page.execute_script("$('div.handle').attr('style', 'left: 216.5px')")
-  sleep(sleep_time) 
-  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -2028px')")
-  page.execute_script("$('div.handle').attr('style', 'left: 363px')")
-  sleep(sleep_time) 
-  # using this slider position can be moved to any point like using mouse move
-  # this step can be extentable to the level of mouse scrolling
-  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: -1500px')")
-  page.execute_script("$('div.handle').attr('style', 'left: 268px')")
-  sleep(sleep_time) 
+  move_jqueryui_slider('0px', '0px', sleep_time)
+  move_jqueryui_slider('-468px', '83.5px', sleep_time)
+  move_jqueryui_slider('-1207px', '216.5px', sleep_time)
+  move_jqueryui_slider('-2028px', '363px', sleep_time)
+  move_jqueryui_slider('-1500px', '268px', sleep_time)
   #resetting back
-  page.execute_script("$('div.sliderGallery ul').attr('style', 'left: 0px')")
-  page.execute_script("$('div.handle').attr('style', 'left: 0px')")
-  sleep(sleep_time) 
+  move_jqueryui_slider('0px', '0px', sleep_time)
 
 end
