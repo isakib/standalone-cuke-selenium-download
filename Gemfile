@@ -1,11 +1,11 @@
 source "http://rubygems.org"
 
-group(:test) do
+group :test do
   gem "cucumber"
   gem "capybara"
   gem "selenium-webdriver"
   gem "rspec"
-  gem "debugger"
+  #gem "debugger"
   gem "launchy"
   gem "rake"
 end
