@@ -28,42 +28,14 @@
 
 == Project Layout
 
-.
-├── Gemfile
-├── Gemfile.lock
-├── README.rdoc
-├── Rakefile
-├── config
-│   └── cucumber.yml
-├── features
-│   ├── download.feature
-│   ├── search.feature
-│   ├── step_definitions
-│   │   ├── debug_steps.rb
-│   │   ├── download_steps.rb
-│   │   └── web_steps.rb
-│   └── support
-│       ├── downloads.rb
-│       ├── env.rb
-│       ├── hooks.rb
-│       └── javascript.rb
-├── spec
-│   ├── integration
-│   │   ├── first_spec.rb
-│   │   └── search_spec.rb
-│   └── spec_helper.rb
-└── tmp
-    └── downloads
-
-
 * features/*.feature: cucumber features
 * features/step_definitions/web_steps.rb: generic steps that apply to all features
 * features/step_definitions/[feature]_steps.rb: steps specific to an individual feature file
 * features/step_definitions/debug_steps.rb: generic debug steps, debug 
-* support/env.rb: configures the driver (download settings) and the hostname to use
-* support/hooks.rb: pause step
-* support/download.rb: download file checkings and cleanups
-* support/javascript.rb: javascript triggers and ajax request completion check (requires jQuery)
+* features/support/env.rb: configures the driver (download settings) and the hostname to use
+* features/support/hooks.rb: pause step
+* features/support/download.rb: download file checkings and cleanups
+* features/support/javascript.rb: javascript triggers and ajax request completion check (requires jQuery)
 * tmp/downloads: download directory
 * config/cucumber.yml: default cuke running setups
 * rspec/spec_helper.rb: rspec helper and env loader
@@ -79,7 +51,8 @@
 
 == Configuration
 
-* bundle update
+* bundle install
+(Gemfile.lock is removed from this repo to be version agnostic)
 
 == Running Features
 
