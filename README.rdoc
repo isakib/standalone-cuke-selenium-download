@@ -28,6 +28,34 @@
 
 == Project Layout
 
+.
+├── Gemfile
+├── Gemfile.lock
+├── README.rdoc
+├── Rakefile
+├── config
+│   └── cucumber.yml
+├── features
+│   ├── download.feature
+│   ├── search.feature
+│   ├── step_definitions
+│   │   ├── debug_steps.rb
+│   │   ├── download_steps.rb
+│   │   └── web_steps.rb
+│   └── support
+│       ├── downloads.rb
+│       ├── env.rb
+│       ├── hooks.rb
+│       └── javascript.rb
+├── spec
+│   ├── integration
+│   │   ├── first_spec.rb
+│   │   └── search_spec.rb
+│   └── spec_helper.rb
+└── tmp
+    └── downloads
+
+
 * features/*.feature: cucumber features
 * features/step_definitions/web_steps.rb: generic steps that apply to all features
 * features/step_definitions/[feature]_steps.rb: steps specific to an individual feature file
