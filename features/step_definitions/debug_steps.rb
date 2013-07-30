@@ -3,8 +3,12 @@ When 'I debug' do
   $cucumber_debugged = true
 end
 
-When /^(?:|I )wait (\d+) seconds?$/ do |seconds|
-  sleep seconds.to_i
+When /^(?:|I )wait (#{CAPTURE_A_NUMBER}) seconds?$/ do |seconds|
+  sleep seconds
+end
+
+When /^(?:|I )wait 1\/(#{CAPTURE_A_FLOAT})(?:|rd|th) of a second?$/ do |fraction| 
+  sleep 1/fraction
 end
 
 Then /^show me the page$/ do
