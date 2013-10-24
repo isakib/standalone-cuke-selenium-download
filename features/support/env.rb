@@ -14,17 +14,25 @@ Capybara.default_driver = :selenium
 Capybara.app_host = 'http://www.google.com' 
 Capybara.default_wait_time = 2
 
+# Capybara.register_driver :selenium do |app|
+  # profile = Selenium::WebDriver::Firefox::Profile.new
+  # profile['browser.download.folderList'] = 2
+  # profile['browser.download.manager.showWhenStarting'] = false
+  # profile['browser.download.manager.useWindow'] = false
+  # profile['browser.download.useDownloadDir'] = true
+  # profile['browser.download.dir'] = ENV['DOWNLOAD_DIR']
+  # profile['browser.helperApps.neverAsk.saveToDisk'] = "application/x-tar,application/g-zip,application/zip,application/csv,application/excel,text/csv"
+  # #avoid print dialogs
+  # profile['capability.policy.default.Window.print'] = "noAccess"
+  # Capybara::Selenium::Driver.new(app, :profile => profile)
+# end
+
+#IE Config
 Capybara.register_driver :selenium do |app|
-  profile = Selenium::WebDriver::Firefox::Profile.new
-  profile['browser.download.folderList'] = 2
-  profile['browser.download.manager.showWhenStarting'] = false
-  profile['browser.download.manager.useWindow'] = false
-  profile['browser.download.useDownloadDir'] = true
-  profile['browser.download.dir'] = ENV['DOWNLOAD_DIR']
-  profile['browser.helperApps.neverAsk.saveToDisk'] = "application/x-tar,application/g-zip,application/zip,application/csv,application/excel,text/csv"
-  #avoid print dialogs
-  profile['capability.policy.default.Window.print'] = "noAccess"
-  Capybara::Selenium::Driver.new(app, :profile => profile)
+  Capybara::Selenium::Driver.new(app,
+    :browser => :remote,
+    :url => "http://172.16.80.115:4444/wd/hub",
+    :desired_capabilities => :internet_explorer)
 end
 
 Capybara.configure do |config|
