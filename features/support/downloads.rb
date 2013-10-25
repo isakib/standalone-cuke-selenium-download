@@ -28,8 +28,11 @@ module DownloadHelpers
   end
 
   def downloading?
-    #debugger
-    downloads.grep(/\.part$/).any?
+    if ENV['BROWSER'] && ENV['BROWSER'].downcase == 'chrome'
+      downloads.grep(/\.crdownload$/).any?
+    else
+      downloads.grep(/\.part$/).any?
+    end
   end
 
   def clear_downloads
